@@ -1,5 +1,25 @@
 [
 	{
+		"title": "Golfbreaks - Customer Portal",
+		"type": "Web",
+		"project": "Work",
+		"link": "https://my.golfbreaks.com",
+		"short": "As part of my work for Golfbreaks, I was a big part in developing our customer portal. This is built with REACT JS. It is a logged-in portal with lots of functionality. The work involved APIs, interactive components and responsive design, as well as complicated business logic.",
+		"image": ["https://i.postimg.cc/VvKqMqpn/SKIP.png"],
+		"alt": ["Golfbreaks event hub"],
+		"tag": ["web"]
+	},
+	{
+		"title": "Golfbreaks - Events Hub",
+		"type": "Web",
+		"project": "Work",
+		"link": "https://golfbreaks.co.uk/events",
+		"short": "As part of my work for Golfbreaks, I do a lot of developing on the main website. For this we use NUXT and Vue JS. Events Hub is an entire feature of the website that I built, which includes a checkout process, and lots of nice visual elements also.",
+		"image": ["https://i.postimg.cc/vTY7cqqG/Events-Hub.png"],
+		"alt": ["Golfbreaks event hub"],
+		"tag": ["web"]
+	},
+	{
 		"no": 0,
 		"title": "Drive By Digital ",
 		"type": "Web",

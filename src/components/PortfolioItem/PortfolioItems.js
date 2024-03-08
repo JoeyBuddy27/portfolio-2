@@ -1,21 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import PortfolioItem from '../PortfolioItem/PortfolioItem.js';
-import AllData from '../../JSON/allData.json';
+// import AllData from '../../JSON/allData.json';
 import Grid from '@mui/material/Grid';
 import classes from './PortfolioItems.module.css';
 import Button from '@mui/material/Button';
 import Grow from '@mui/material/Grow';
 
-import FullPortfolio from '../../components/FullPortfolio/FullPortfolio';
-
 const PortfolioItems = props => {
-	const [myData, setMyData] = useState(AllData);
+	const [myData, setMyData] = useState([]);
+	const [allData, setAllData] = useState([]);
 	const [allActive, setAllActive] = useState('isActive');
 	const [webActive, setWebActive] = useState(' ');
 	const [visualActive, setVisualActive] = useState(' ');
 	const [checked, setChecked] = useState(true);
 	const [imgNum, setImgNum] = useState(0);
 	const [currNum, setCurrNum] = useState(0);
+
+	useEffect(() => {
+		fetch(
+			'https://gist.githubusercontent.com/JoeyBuddy27/e51011f79549928819694e1fca0a9b24/raw/0cde0f8ff5f4ce76af83657426fd1add87bd4792/portfolio-data.json',
+		)
+			.then(response => response.json())
+			.then(data => {
+				console.log('data', data);
+				setAllData(data);
+				setMyData(data);
+			})
+			.catch(err => console.error(err));
+	}, []);
 
 	useEffect(() => {}, [webActive, visualActive, allActive]);
 
@@ -29,10 +41,10 @@ const PortfolioItems = props => {
 	const updateData = (newData, all, web, visual) => {
 		fadeHandler();
 		if (newData === 'all') {
-			setMyData(AllData);
+			setMyData(allData);
 		} else {
-			console.log(AllData);
-			setMyData(() => AllData.filter(data => data.tag.includes(newData)));
+			console.log(allData);
+			setMyData(() => allData.filter(data => data.tag.includes(newData)));
 		}
 
 		setAllActive(all);
@@ -51,7 +63,7 @@ const PortfolioItems = props => {
 					?.map((postData, index) => (
 						<>
 							<PortfolioItem
-								key={postData?.no}
+								key={postData?.title}
 								number={index}
 								title={postData.title}
 								short={postData.short}
