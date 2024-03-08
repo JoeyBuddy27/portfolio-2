@@ -44,18 +44,18 @@ const PortfolioItems = props => {
 			console.error('Error fetching data:', error);
 		});
 
-	useEffect(() => {
-		fetch(
-			'https://gist.githubusercontent.com/JoeyBuddy27/e51011f79549928819694e1fca0a9b24/raw/0cde0f8ff5f4ce76af83657426fd1add87bd4792/portfolio-data.json',
-		)
-			.then(response => response.json())
-			.then(data => {
-				console.log('data', data);
-				setAllData(data);
-				setMyData(data);
-			})
-			.catch(err => console.error(err));
-	}, []);
+	// useEffect(() => {
+	// 	fetch(
+	// 		'https://gist.githubusercontent.com/JoeyBuddy27/e51011f79549928819694e1fca0a9b24/raw/0cde0f8ff5f4ce76af83657426fd1add87bd4792/portfolio-data.json',
+	// 	)
+	// 		.then(response => response.json())
+	// 		.then(data => {
+	// 			console.log('data', data);
+	// 			setAllData(data);
+	// 			setMyData(data);
+	// 		})
+	// 		.catch(err => console.error(err));
+	// }, []);
 
 	useEffect(() => {}, [webActive, visualActive, allActive]);
 
