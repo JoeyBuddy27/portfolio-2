@@ -16,6 +16,34 @@ const PortfolioItems = props => {
 	const [imgNum, setImgNum] = useState(0);
 	const [currNum, setCurrNum] = useState(0);
 
+	// access key $2a$10$.i6OSz1qYvSb5dL/lQcQq.GbRKV/Wsw7gxMtxCLnH8GZ7JxChtmHS
+
+	const apiUrl = `https://api.jsonbin.io/b/${process.env.BIN_ID}`;
+	//api.jsonbin.io/v3/b/65eb4a2c1f5677401f3a62df
+
+	fetch(apiUrl, {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			'X-Access-Key': process.env.BIN_API_KEY, // Add your secret key as a header for private bins
+		},
+	})
+		.then(response => {
+			if (!response.ok) {
+				throw new Error(`HTTP error! Status: ${response.status}`);
+			}
+			return response.json();
+		})
+		.then(data => {
+			setAllData(data?.record);
+			setMyData(data?.record);
+
+			// Handle the data as needed
+		})
+		.catch(error => {
+			console.error('Error fetching data:', error);
+		});
+
 	useEffect(() => {
 		fetch(
 			'https://gist.githubusercontent.com/JoeyBuddy27/e51011f79549928819694e1fca0a9b24/raw/0cde0f8ff5f4ce76af83657426fd1add87bd4792/portfolio-data.json',
