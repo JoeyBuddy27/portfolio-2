@@ -16,18 +16,19 @@ const PortfolioItems = props => {
 	const [imgNum, setImgNum] = useState(0);
 	const [currNum, setCurrNum] = useState(0);
 
-	// access key $2a$10$.i6OSz1qYvSb5dL/lQcQq.GbRKV/Wsw7gxMtxCLnH8GZ7JxChtmHS
+	const apiKey = '$2a$10$.i6OSz1qYvSb5dL/lQcQq.GbRKV/Wsw7gxMtxCLnH8GZ7JxChtmHS';
 
-	const apiUrl = `https://api.jsonbin.io/b/${process.env.REACT_APP_BIN_ID}`;
+	const apiUrl = `https://api.jsonbin.io/v3/b/${process.env.REACT_APP_BIN_ID}`;
 	//api.jsonbin.io/v3/b/65eb4a2c1f5677401f3a62df
 
-	console.log('process.env', process.env);
+	console.log('process.env', process.env.REACT_APP_BIN_API_KEY);
 
 	fetch(apiUrl, {
 		method: 'GET',
+		mode: 'no-cors',
 		headers: {
 			'Content-Type': 'application/json',
-			'X-Access-Key': process.env.REACT_APP_BIN_API_KEY,
+			'X-Access-Key': apiKey,
 			'Access-Control-Allow-Origin': '*',
 		},
 	})
