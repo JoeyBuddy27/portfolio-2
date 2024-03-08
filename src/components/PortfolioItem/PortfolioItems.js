@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import classes from './PortfolioItems.module.css';
 import Button from '@mui/material/Button';
 import Grow from '@mui/material/Grow';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const PortfolioItems = props => {
 	const [myData, setMyData] = useState([]);
@@ -23,42 +24,46 @@ const PortfolioItems = props => {
 
 	console.log('process.env', process.env.REACT_APP_BIN_API_KEY);
 
-	fetch(apiUrl, {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json',
-			'X-Access-Key': apiKey,
-			'Access-Control-Allow-Origin': '*',
-		},
-	})
-		.then(response => {
-			if (!response.ok) {
-				throw new Error(`HTTP error! Status: ${response.status}`);
-			}
-			return response.json();
-		})
-		.then(data => {
-			setAllData(data?.record);
-			setMyData(data?.record);
+	const [loading, setLoading] = useState(true);
 
-			// Handle the data as needed
-		})
-		.catch(error => {
-			console.error('Error fetching data:', error);
-		});
+	useEffect(() => {
+		// fetch(
+		// 	'https://gist.githubusercontent.com/JoeyBuddy27/e51011f79549928819694e1fca0a9b24/raw/0cde0f8ff5f4ce76af83657426fd1add87bd4792/portfolio-data.json',
+		// )
+		// 	.then(response => response.json())
+		// 	.then(data => {
+		// 		console.log('data', data);
+		// 		setAllData(data);
+		// 		setMyData(data);
+		// 	})
+		// 	.catch(err => console.error(err));
 
-	// useEffect(() => {
-	// 	fetch(
-	// 		'https://gist.githubusercontent.com/JoeyBuddy27/e51011f79549928819694e1fca0a9b24/raw/0cde0f8ff5f4ce76af83657426fd1add87bd4792/portfolio-data.json',
-	// 	)
-	// 		.then(response => response.json())
-	// 		.then(data => {
-	// 			console.log('data', data);
-	// 			setAllData(data);
-	// 			setMyData(data);
-	// 		})
-	// 		.catch(err => console.error(err));
-	// }, []);
+		fetch(apiUrl, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				'X-Access-Key': apiKey,
+				'Access-Control-Allow-Origin': '*',
+			},
+		})
+			.then(response => {
+				if (!response.ok) {
+					throw new Error(`HTTP error! Status: ${response.status}`);
+				}
+				return response.json();
+			})
+			.then(data => {
+				setAllData(data?.record);
+				setMyData(data?.record);
+				setLoading(false);
+
+				// Handle the data as needed
+			})
+			.catch(error => {
+				console.error('Error fetching data:', error);
+				setLoading(false);
+			});
+	}, []);
 
 	useEffect(() => {}, [webActive, visualActive, allActive]);
 
@@ -77,7 +82,6 @@ const PortfolioItems = props => {
 			console.log(allData);
 			setMyData(() => allData.filter(data => data.tag.includes(newData)));
 		}
-
 		setAllActive(all);
 		setWebActive(web);
 		setVisualActive(visual);
@@ -89,6 +93,21 @@ const PortfolioItems = props => {
 	let portfolioGrid = (
 		<Grow in={checked} timeout={500}>
 			<Grid container spacing={3}>
+				{loading && (
+					<div
+						style={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+							justifyContent: 'center',
+							alignSelf: 'center',
+							flex: 1,
+						}}
+					>
+						<CircularProgress />
+						<h3 style={{ marginTop: '16px' }}> Fetching Data</h3>
+					</div>
+				)}
 				{myData
 					?.filter(item => !item.hide)
 					?.map((postData, index) => (
