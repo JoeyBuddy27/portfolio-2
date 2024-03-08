@@ -18,14 +18,17 @@ const PortfolioItems = props => {
 
 	// access key $2a$10$.i6OSz1qYvSb5dL/lQcQq.GbRKV/Wsw7gxMtxCLnH8GZ7JxChtmHS
 
-	const apiUrl = `https://api.jsonbin.io/b/${process.env.BIN_ID}`;
+	const apiUrl = `https://api.jsonbin.io/b/${process.env.REACT_APP_BIN_ID}`;
 	//api.jsonbin.io/v3/b/65eb4a2c1f5677401f3a62df
+
+	console.log('process.env', process.env);
 
 	fetch(apiUrl, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json',
-			'X-Access-Key': process.env.BIN_API_KEY, // Add your secret key as a header for private bins
+			'X-Access-Key': process.env.REACT_APP_BIN_API_KEY,
+			'Access-Control-Allow-Origin': '*',
 		},
 	})
 		.then(response => {
