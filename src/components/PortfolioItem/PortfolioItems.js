@@ -25,7 +25,6 @@ const PortfolioItems = props => {
 
 	fetch(apiUrl, {
 		method: 'GET',
-		mode: 'no-cors',
 		headers: {
 			'Content-Type': 'application/json',
 			'X-Access-Key': apiKey,
