@@ -1,25 +1,37 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { Route, Switch, useLocation, Redirect, withRouter } from 'react-router-dom';
+import Layout from './hoc/Layout/Layout';
+import asyncComponent from './hoc/asyncComponent/asyncComponent';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = props => {
+	let location = useLocation().pathname;
+	let locationName = location.substr(1);
+	if (location === '/') {
+		locationName = 'portfolio';
+	}
 
-export default App;
+	const asyncPortfolio = asyncComponent(() => {
+		return import('./containers/Portfolio/Portfolio');
+	});
+
+	const asyncAbout = asyncComponent(() => {
+		return import('./containers/About/About');
+	});
+
+	let routes = (
+		<Switch>
+			<Route path='/experience' exact title='Experience' component={asyncAbout} />
+			<Route path='/' title='Home' exact component={asyncPortfolio} />
+			<Redirect to='/' />
+		</Switch>
+	);
+
+	return (
+		<React.Fragment>
+			<Layout pageTitle={locationName.toUpperCase()}>{routes}</Layout>
+		</React.Fragment>
+	);
+};
+
+export default withRouter(App);

@@ -1,0 +1,10 @@
+.isActive {
+  border: 1px solid #23a6d5 !important;
+}
+
+.switchButton {
+  margin: 0px auto;
+  text-align: center;
+  margin-bottom: 2em;
+  margin-top: 1em;
+}

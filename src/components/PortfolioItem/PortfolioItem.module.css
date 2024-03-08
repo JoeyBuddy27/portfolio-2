@@ -1,0 +1,91 @@
+.Type {
+	background-color: #23d5ab !important;
+	font-size: 14px !important;
+	padding: 3px !important;
+}
+
+.Alt {
+	font-size: 12px;
+	font-style: italic;
+}
+
+.Work {
+	background-color: orange !important;
+	font-size: 14px !important;
+	padding: 3px !important;
+}
+
+.Fun {
+	background-color: #e73c7e !important;
+	font-size: 14px !important;
+	padding: 3px !important;
+}
+
+.weblink {
+	font-size: 10px !important;
+	text-align: center;
+	margin-bottom: 1px;
+	margin-right: 8px;
+}
+
+.root {
+	max-width: 100%;
+	/* height: 96%; */
+	/* height: 500px; */
+	height: 92%;
+	/* margin: auto; */
+	max-width: 100%;
+	padding: 16px;
+	margin-bottom: 32px;
+	display: flex;
+	flex-direction: column;
+}
+
+.active {
+	border: 1px solid #23a6d5;
+	max-width: 550px;
+	height: 610px;
+	margin: auto;
+	padding: 3%;
+	max-width: 100%;
+}
+
+.media {
+	height: 250px;
+	opacity: 0.9;
+	border-radius: 1%;
+}
+
+.media:hover {
+	opacity: 1;
+}
+
+@media (max-width: 650px) {
+	.root {
+		max-width: 99%;
+		max-height: 550px;
+	}
+	.PortfolioImage {
+		max-height: 100%;
+		width: 85%;
+	}
+}
+
+.PortfolioImage {
+	text-align: center;
+	margin: 0px auto;
+	max-height: 500px;
+	max-width: 90%;
+	border-radius: 1%;
+}
+
+@media (min-width: 599px) {
+	.PortfolioImage {
+		max-width: 100%;
+	}
+}
+
+.desc {
+	white-space: pre-line;
+	vertical-align: bottom;
+}

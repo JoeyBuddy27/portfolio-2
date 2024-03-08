@@ -1,0 +1,23 @@
+.PortfolioCategories {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	padding-bottom: 32px;
+	padding-top: 16px;
+}
+
+@media (min-width: 600px) {
+	.PortfolioCategories {
+		width: 50%;
+		margin: 0px auto;
+	}
+}
+
+.isActive {
+	border: 1px solid #23a6d5 !important;
+}
+
+/*.Center {
+	margin: auto;
+	align-items: center;
+}*/

@@ -1,0 +1,29 @@
+.profilePic {
+	width: 100%;
+	max-width: 100px;
+	border-radius: 16px;
+	max-height: 500px;
+	/* object-fit: contain; */
+	object-fit: cover;
+}
+
+@media only screen and (max-width: 650px) {
+	.profilePic {
+		margin-left: 0px;
+		max-width: 100% !important;
+	}
+}
+
+.Social {
+	color: #23a6d5;
+	cursor: pointer;
+}
+
+.isActive {
+	border: 1px solid #23a6d5 !important;
+}
+
+.paragraph {
+	margin-bottom: 20px;
+	margin-top: 24px;
+}

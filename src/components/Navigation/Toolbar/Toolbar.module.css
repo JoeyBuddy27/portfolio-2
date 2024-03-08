@@ -1,0 +1,25 @@
+.Toolbar {
+	height: 100px;
+	z-index: 100;
+	align-items: center;
+	align-content: center;
+	background-color: rgba(#23a6d5, 0.5);
+	border-bottom-width: 2px;
+	border-bottom-color: #23a6d5;
+	border-bottom-style: solid;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.ToolbarInner {
+	max-width: 1400px;
+	display: flex;
+	justify-content: space-between;
+	box-sizing: border-box;
+	margin: auto;
+	padding: 10px;
+}
+
+.Logo {
+	height: 75px;
+}

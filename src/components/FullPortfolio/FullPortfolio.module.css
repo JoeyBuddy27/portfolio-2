@@ -1,0 +1,70 @@
+.FullPortfolio {
+  height: 100%;
+  align-items: center;
+  padding: 2%;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  outline-color: #23a6d5;
+  text-align: center;
+  box-shadow: 2pt #23a6d5;
+}
+
+@media only screen and (max-width: 650px) {
+  .FullPortfolio {
+    margin-right: 0px;
+  }
+}
+
+a {
+  opacity: 1;
+}
+
+.Image {
+  border-radius: 2%;
+  width: 85%;
+}
+
+.PortfolioTitle {
+  color: #23a6d5;
+}
+
+.Type {
+  background-color: #23d5ab !important;
+  font-size: 14px !important;
+  padding: 3px !important;
+  margin-right: 10px !important;
+  color: white !important;
+  box-sizing: border-box !important;
+  cursor: default !important;
+}
+
+.Weblink {
+  font-size: 10px !important;
+}
+
+.Alt {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.Work {
+  background-color: orange !important;
+  font-size: 14px !important;
+  padding: 3px !important;
+  color: white !important;
+  box-sizing: border-box !important;
+  cursor: default !important;
+}
+
+.Fun {
+  background-color: #e73c7e !important;
+  font-size: 14px !important;
+  padding: 3px !important;
+  color: white !important;
+  box-sizing: border-box !important;
+  cursor: default !important;
+}
+
+.nextImg {
+  cursor: pointer;
+}
